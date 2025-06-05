@@ -1,0 +1,249 @@
+/* Mobile Search Header Styles */
+.mobile-search-header {
+  display: none;
+  padding: 10px 16px;
+  background-color: #f0f2f5;
+  border-bottom: 1px solid #e2e8f0;
+  flex-direction: column;
+  gap: 10px;
+  position: relative;
+  z-index: 100;
+}
+
+/* Override any inline styles with higher specificity */
+div.mobile-search-header {
+  z-index: 100 !important;
+}
+
+/* Only show on mobile devices */
+@media (max-width: 991px) {
+  .mobile-search-header {
+    display: flex;
+  }
+}
+
+.mobile-location-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: flex-start !important;
+  background-color: white !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  color: #4a5568 !important;
+  width: 100% !important;
+  max-width: 100% !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05) !important;
+  margin-bottom: 8px !important;
+  position: relative !important;
+  z-index: 101 !important;
+}
+
+.mobile-location-button i:first-child {
+  color: #37bac1 !important;
+  margin-right: 8px !important;
+  min-width: 16px !important;
+}
+
+.mobile-location-button .location-text {
+  flex: 1 !important;
+  text-align: left !important;
+  overflow: hidden !important;
+  text-overflow: ellipsis !important;
+  white-space: nowrap !important;
+  font-weight: 500 !important;
+  margin: 0 8px !important;
+}
+
+/* Location dropdown container */
+.location-dropdown-container {
+  position: fixed !important;
+  top: 130px !important;
+  left: 15px !important;
+  right: 15px !important;
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1) !important;
+  max-height: 70vh !important;
+  overflow-y: auto !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  z-index: 1000 !important;
+  padding: 15px !important;
+  margin: 0 !important;
+  display: block !important;
+}
+
+/* Location dropdown overlay */
+.location-overlay {
+  position: fixed !important;
+  top: 0 !important;
+  left: 0 !important;
+  right: 0 !important;
+  bottom: 0 !important;
+  background-color: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(5px) !important;
+  -webkit-backdrop-filter: blur(5px) !important;
+  z-index: 900 !important;
+}
+
+.mobile-search-container {
+  width: 100%;
+  position: relative;
+  z-index: 50;
+}
+
+.mobile-search-container input {
+  border-radius: 20px !important;
+  border: 1px solid #e2e8f0 !important;
+}
+
+/* Fix search suggestions dropdown */
+.search-suggestions {
+  position: fixed !important;
+  top: auto !important;
+  left: 15px !important;
+  right: 15px !important;
+  width: calc(100% - 30px) !important;
+  z-index: 800 !important;
+  margin-top: 5px !important;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1) !important;
+}
+
+/* Desktop view search suggestions */
+@media (min-width: 768px) {
+  .search-suggestions {
+    position: absolute !important;
+    top: calc(100% + 5px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    width: 100% !important;
+    z-index: 200 !important;
+    max-height: 400px !important;
+  }
+}
+
+/* Ensure only one dropdown is visible at a time */
+body.location-dropdown-open .search-suggestions,
+body.search-dropdown-open .location-dropdown-container,
+body.search-dropdown-open .location-overlay {
+  display: none !important;
+}
+
+/* Hide these elements in mobile navbar since we're showing them in the header */
+@media (max-width: 991px) {
+  .navbar .d-lg-none .search-container-wrapper,
+  .navbar .d-lg-none .location-button-mobile {
+    display: none !important;
+  }
+  
+  /* Add spacing between mobile search header and category navbar */
+  .cat-navbar {
+    margin-top: 0 !important;
+  }
+  
+  /* Make search input more visible */
+  .mobile-search-container .form-outline {
+    width: 100% !important;
+  }
+  
+  .mobile-search-container .form-control {
+    background-color: white !important;
+    border-radius: 20px !important;
+    padding-left: 15px !important;
+    height: 40px !important;
+  }
+  
+  .mobile-search-container .input-group {
+    border-radius: 20px !important;
+    overflow: hidden;
+  }
+
+  /* Fix search suggestions positioning for mobile */
+  .mobile-search-container .search-suggestions {
+    position: fixed !important;
+    top: 130px !important; /* Adjust based on your header height */
+    left: 15px !important;
+    right: 15px !important;
+    max-height: 60vh !important;
+    overflow-y: auto !important;
+  }
+  
+  /* Prevent scrolling when dropdowns are open */
+  body.location-dropdown-open,
+  body.search-dropdown-open {
+    overflow: hidden !important;
+  }
+}
+
+/* Tab-style category navigation */
+.mobile-category-tabs {
+  display: flex;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding: 0 8px;
+  gap: 12px;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+  margin-top: 8px;
+}
+
+.mobile-category-tabs::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.mobile-category-tab {
+  display: inline-flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 8px 12px;
+  min-width: 70px;
+  text-decoration: none;
+  color: #4a5568;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.mobile-category-tab .tab-icon {
+  width: 32px;
+  height: 32px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.mobile-category-tab .tab-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.mobile-category-tab .tab-text {
+  text-align: center;
+}
+
+/* View toggle button */
+.mobile-view-toggle {
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+  padding: 8px 0;
+}
+
+.mobile-view-toggle button {
+  color: #3182ce;
+  font-size: 14px;
+  background: none;
+  border: none;
+  display: flex;
+  align-items: center;
+  padding: 4px 12px;
+}
+
+.mobile-view-toggle button i {
+  margin-right: 6px;
+} 

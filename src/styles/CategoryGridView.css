@@ -1,0 +1,241 @@
+/* CategoryGridView.css */
+.olx-grid-view {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 8px;
+  padding: 12px;
+}
+
+.olx-category-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 8px;
+  padding: 10px 6px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-height: 80px; /* Ensure consistent height */
+  justify-content: center;
+}
+
+.olx-category-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
+}
+
+.olx-category-icon {
+  width: 36px;
+  height: 36px;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.olx-category-icon img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.olx-category-icon svg {
+  font-size: 24px;
+  color: #3182ce; /* Chakra blue.500 */
+}
+
+.olx-category-name {
+  font-size: 11px;
+  font-weight: 500;
+  color: #2d3748; /* Chakra gray.700 */
+  text-align: center;
+  line-height: 1.2;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  word-break: break-word;
+}
+
+/* Swipeable container for horizontal scrolling */
+.category-scroll-container {
+  display: flex;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none; /* Firefox */
+  padding: 12px 8px;
+}
+
+.category-scroll-container::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Edge */
+}
+
+.scroll-category-item {
+  scroll-snap-align: start;
+  min-width: 80px;
+  margin-right: 12px;
+}
+
+/* View toggle button */
+.view-toggle-button {
+  width: 100%;
+  text-align: center;
+  padding: 8px;
+  margin: 8px 0;
+  color: #3182ce;
+  background: none;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.mobile-view-toggle {
+  display: flex;
+  justify-content: center;
+  margin: 8px 0;
+  padding: 0 16px;
+}
+
+.mobile-view-toggle button {
+  background-color: #f0f7ff !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.2s ease !important;
+}
+
+.mobile-view-toggle button:hover {
+  background-color: #e6f0ff !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Category images for common categories */
+.category-image-properties {
+  background: url('https://i.pinimg.com/736x/7c/e1/83/7ce1834398c61c964805f24db3e8fc56.jpg') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-cars {
+  background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcREmPpWr6hdTCNCtMcpVO-N8QLjZA016FgN9A&s') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-mobiles {
+  background: url('https://media-ik.croma.com/prod/https://media.croma.com/image/upload/v1737638800/Croma%20Assets/Communication/Mobiles/Images/309122_0_fehghq.png') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-jobs {
+  background: url('https://img.freepik.com/free-vector/tiny-people-searching-business-opportunities_74855-19928.jpg?semt=ais_items_boosted&w=740') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-bikes {
+  background: url('https://static.vecteezy.com/system/resources/previews/035/638/603/non_2x/motorcycle-car-bicycle-motorbike-png.png') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-electronics {
+  background: url('https://i.pinimg.com/originals/51/d3/88/51d38806d50482762c700eca5717a32f.png') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-furniture {
+  background: url('https://www.pngall.com/wp-content/uploads/11/Wooden-Furniture-Chair-PNG-Photo.png') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-fashion {
+  background: url('https://static.vecteezy.com/system/resources/previews/048/346/342/non_2x/women-shopping-for-clothes-enjoying-a-day-out-together-png.png') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-books {
+  background: url('https://purepng.com/public/uploads/large/bundle-of-books-r6w.png') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-pets {
+  background: url('https://www.pngall.com/wp-content/uploads/10/Pet-PNG-Photo.png') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+.category-image-services {
+  background: url('https://png.pngtree.com/png-clipart/20230825/original/pngtree-mortgage-credit-service-family-home-picture-image_8641431.png') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+/* Default category image for categories without specific images */
+.category-image-default {
+  background: url('https://www.freeiconspng.com/uploads/vehicle-png-25.png') no-repeat center;
+  background-size: contain;
+  width: 36px;
+  height: 36px;
+}
+
+/* Responsive adjustments for smaller screens */
+@media (max-width: 480px) {
+  .olx-grid-view {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    padding: 8px;
+  }
+  
+  .olx-category-item {
+    padding: 8px 4px;
+    min-height: 70px;
+  }
+  
+  .olx-category-icon {
+    width: 32px;
+    height: 32px;
+    margin-bottom: 4px;
+  }
+  
+  .olx-category-name {
+    font-size: 10px;
+  }
+  
+  /* Adjust image sizes for very small screens */
+  .category-image-properties,
+  .category-image-cars,
+  .category-image-mobiles,
+  .category-image-jobs,
+  .category-image-bikes,
+  .category-image-electronics,
+  .category-image-furniture,
+  .category-image-fashion,
+  .category-image-books,
+  .category-image-pets,
+  .category-image-services,
+  .category-image-default {
+    width: 32px;
+    height: 32px;
+  }
+} 

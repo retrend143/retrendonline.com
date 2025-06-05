@@ -1,0 +1,87 @@
+/* Wishlist page specific styles */
+.wishlist-container {
+  padding: 15px;
+}
+
+.wishlist-title {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.wishlist-card {
+  position: relative;
+  height: 100%;
+  transition: transform 0.2s ease-in-out;
+}
+
+.wishlist-card:hover {
+  transform: translateY(-5px);
+}
+
+.wishlist-heart-button {
+  position: absolute !important;
+  top: 10px !important;
+  right: 10px !important;
+  z-index: 10 !important;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2) !important;
+}
+
+/* Mobile-specific styles */
+@media (max-width: 480px) {
+  .wishlist-container {
+    padding: 10px;
+  }
+  
+  .wishlist-title {
+    font-size: 1.5rem !important;
+    margin-bottom: 15px;
+  }
+  
+  .wishlist-card-wrapper {
+    padding: 5px;
+  }
+  
+  .wishlist-heart-button {
+    top: 5px !important;
+    right: 5px !important;
+    transform: scale(0.9) !important;
+  }
+}
+
+/* Ensure product cards display properly on mobile */
+@media (max-width: 480px) {
+  .olx-profile-card {
+    margin-bottom: 10px !important;
+  }
+  
+  .olx-profile-card-content {
+    flex-direction: column !important;
+  }
+  
+  .olx-profile-image-container {
+    width: 100% !important;
+    height: 120px !important;
+  }
+  
+  .olx-profile-details {
+    padding: 8px !important;
+  }
+  
+  .olx-profile-title {
+    font-size: 0.9rem !important;
+    margin-bottom: 4px !important;
+  }
+  
+  .olx-profile-description {
+    font-size: 0.8rem !important;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    line-clamp: 2; /* Standard property for compatibility */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  
+  .olx-profile-price {
+    font-size: 1rem !important;
+  }
+}

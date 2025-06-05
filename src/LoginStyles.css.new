@@ -1,0 +1,295 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,800');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* Scope all styles to the login component to prevent affecting other parts of the app */
+.login-container * {
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.login-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+/* Single container layout */
+.login-container .single-container {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 14px 28px rgba(0, 0, 0, 0.1), 0 10px 10px rgba(0, 0, 0, 0.05);
+  width: 100%;
+  max-width: 800px;
+  overflow: hidden;
+}
+
+/* Header with tabs */
+.login-container .login-header {
+  padding: 20px;
+  border-bottom: 1px solid #f0f0f0;
+  text-align: center;
+}
+
+.login-container .login-header h2 {
+  margin: 0 0 20px;
+  color: #333;
+  font-weight: 600;
+}
+
+.login-container .form-toggle {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.login-container .form-toggle button {
+  background: transparent;
+  border: none;
+  padding: 10px 30px;
+  margin: 0 5px;
+  color: #777;
+  font-weight: 600;
+  font-size: 14px;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.login-container .form-toggle button:after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background-color: #37bac1;
+  transition: width 0.3s ease;
+}
+
+.login-container .form-toggle button.active {
+  color: #37bac1;
+}
+
+.login-container .form-toggle button.active:after {
+  width: 100%;
+}
+
+/* Content area with two panels */
+.login-container .login-content {
+  display: flex;
+  flex-direction: row;
+  min-height: 450px;
+}
+
+/* Left panel - colored background with welcome message */
+.login-container .left-panel {
+  background: linear-gradient(135deg, #37bac1, #2a8f95);
+  color: white;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 40%;
+}
+
+.login-container .left-panel h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.login-container .left-panel p {
+  font-size: 14px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.login-container .social-container {
+  margin: 20px 0;
+}
+
+.login-container .or-divider {
+  position: relative;
+  margin: 20px 0;
+  width: 80%;
+  text-align: center;
+}
+
+.login-container .or-divider:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.login-container .or-divider span {
+  position: relative;
+  background: linear-gradient(135deg, #37bac1, #2a8f95);
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+/* Right panel - form area */
+.login-container .right-panel {
+  padding: 40px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.login-container .form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.login-container input {
+  background-color: #f7f7f7;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 15px;
+  width: 100%;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+.login-container input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(55, 186, 193, 0.3);
+}
+
+.login-container .password-field-container {
+  position: relative;
+  width: 100%;
+}
+
+.login-container .password-toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer;
+  padding: 0;
+  margin: 0;
+}
+
+.login-container .password-toggle-btn:hover {
+  color: #37bac1;
+}
+
+.login-container .forgot-password {
+  text-align: right;
+  margin: 10px 0 20px;
+}
+
+.login-container .forgot-password a {
+  color: #777;
+  font-size: 12px;
+  text-decoration: none;
+}
+
+.login-container .forgot-password a:hover {
+  color: #37bac1;
+  text-decoration: underline;
+}
+
+.login-container .terms-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+}
+
+.login-container .terms-checkbox input {
+  width: auto;
+  margin-right: 10px;
+}
+
+.login-container .terms-checkbox label {
+  font-size: 12px;
+  color: #777;
+}
+
+.login-container .error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin: 5px 0 15px;
+}
+
+.login-container .submit-btn {
+  background-color: #37bac1;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  width: 100%;
+}
+
+.login-container .submit-btn:hover {
+  background-color: #2a8f95;
+}
+
+.login-container .submit-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed;
+}
+
+.login-container .success-message {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1000;
+  width: 80%;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  .login-container .login-content {
+    flex-direction: column;
+  }
+  
+  .login-container .left-panel,
+  .login-container .right-panel {
+    width: 100%;
+    padding: 30px 20px;
+  }
+  
+  .login-container .left-panel {
+    padding-bottom: 20px;
+  }
+  
+  .login-container .right-panel {
+    padding-top: 20px;
+  }
+  
+  .login-container .left-panel h1 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .login-container .left-panel p {
+    margin-bottom: 15px;
+  }
+  
+  .login-container .form-toggle button {
+    padding: 10px 20px;
+    font-size: 12px;
+  }
+}

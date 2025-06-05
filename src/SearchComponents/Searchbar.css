@@ -1,0 +1,355 @@
+/* Searchbar.css - Mobile-friendly search component styles */
+
+.search-container {
+  position: relative;
+  transition: all 0.3s ease;
+  max-width: 650px;
+  width: 100%;
+  margin: 0 auto;
+  z-index: 150;
+}
+
+/* Override any inline styles with higher specificity */
+div.search-container {
+  z-index: 150 !important;
+}
+
+div.search-container.search-focused {
+  z-index: 250 !important;
+}
+
+.search-container .MDBInputGroup {
+  border-radius: 30px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  transition: all 0.3s ease;
+  background-color: white;
+  border: 1px solid rgba(0, 0, 0, 0.05);
+  position: relative;
+}
+
+.search-container.search-focused .MDBInputGroup {
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.12);
+}
+
+.search-container input.form-control {
+  height: 48px;
+  border: none;
+  font-size: 15px;
+  padding-left: 20px;
+  background-color: white;
+  color: #333;
+  transition: all 0.3s ease;
+  box-shadow: none !important;
+  padding-right: 50px; /* Space for the clear button */
+  border-radius: 30px 0 0 30px !important;
+}
+
+.search-container input.form-control:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.search-button {
+  height: 48px;
+  min-width: 48px;
+  border-radius: 0 30px 30px 0;
+  background-color: #37bac1 !important;
+  border: none !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.3s ease;
+}
+
+.clear-search-btn {
+  position: absolute;
+  right: 60px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: transparent;
+  border: none;
+  height: 30px;
+  width: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  z-index: 10;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.clear-search-btn:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.search-suggestions {
+  animation: fadeIn 0.3s ease;
+  border-radius: 15px !important;
+  margin-top: 10px !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  max-height: 70vh;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  width: 100% !important;
+}
+
+/* Desktop specific search suggestions */
+@media (min-width: 768px) {
+  .search-suggestions {
+    position: absolute !important;
+    top: calc(100% + 5px) !important;
+    left: 0 !important;
+    right: 0 !important;
+    max-height: 400px !important;
+    z-index: 200 !important;
+    width: 100% !important;
+  }
+}
+
+/* Force z-index on search suggestions */
+.search-container .search-suggestions,
+div.search-suggestions {
+  z-index: 200 !important;
+}
+
+/* Styling for suggestion items */
+.search-suggestions .chakra-flex {
+  transition: background-color 0.2s ease;
+}
+
+.search-suggestions .chakra-flex:hover {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+}
+
+/* Divider between suggestion sections */
+.search-suggestions .chakra-text + .chakra-flex {
+  margin-top: 4px;
+}
+
+/* Category suggestions styling */
+.search-suggestions .chakra-text[font-weight="bold"] + .chakra-flex {
+  border-top: 1px solid rgba(0, 0, 0, 0.05);
+  margin-top: 8px;
+  padding-top: 4px;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Mobile search header */
+.mobile-search-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 5px;
+  margin-bottom: 5px;
+}
+
+.mobile-search-back-btn {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+}
+
+.mobile-search-back-btn:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.mobile-search-title {
+  font-weight: bold;
+  font-size: 18px;
+  margin: 0;
+}
+
+/* Mobile responsiveness for search */
+@media (max-width: 767.98px) {
+  .search-container {
+    width: 100%;
+    position: relative;
+    z-index: 50;
+  }
+  
+  .search-container input.form-control {
+    height: 42px;
+    font-size: 14px;
+    padding-left: 15px;
+  }
+  
+  .search-button {
+    height: 42px;
+    min-width: 42px;
+  }
+  
+  .clear-search-btn {
+    right: 50px;
+    height: 24px;
+    width: 24px;
+  }
+  
+  /* Blurred background overlay for mobile search */
+  .search-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.8);
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    z-index: 80;
+    animation: fadeIn 0.2s ease;
+  }
+
+  /* Force z-index on search overlay */
+  div.search-overlay {
+    z-index: 80 !important;
+  }
+  
+  /* Mobile search dropdown styling */
+  .search-container.search-focused {
+    position: relative;
+    z-index: 250;
+  }
+  
+  .search-container.search-focused .MDBInputGroup {
+    position: relative;
+    z-index: 251;
+  }
+  
+  .search-container.search-focused .search-suggestions {
+    position: fixed !important;
+    top: 130px !important;
+    left: 15px !important;
+    right: 15px !important;
+    max-height: 60vh !important;
+    z-index: 800 !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+  
+  /* Ensure search form has proper positioning */
+  .search-container .search-form {
+    position: relative;
+    z-index: 250;
+  }
+  
+  /* Make suggestion items larger and more tappable on mobile */
+  .search-suggestions .chakra-flex {
+    padding: 12px !important;
+  }
+  
+  /* Increase font size for better readability on mobile */
+  .search-suggestions .chakra-text {
+    font-size: 14px !important;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 575.98px) {
+  .search-container .MDBInputGroup {
+    border-radius: 20px;
+  }
+  
+  .search-container input.form-control {
+    height: 38px;
+    font-size: 13px;
+    padding-left: 12px;
+    padding-right: 40px;
+  }
+  
+  .search-button {
+    height: 38px;
+    min-width: 38px;
+  }
+  
+  .clear-search-btn {
+    right: 45px;
+    height: 20px;
+    width: 20px;
+  }
+}
+
+/* Very small devices */
+@media (max-width: 379.98px) {
+  .search-container input.form-control {
+    font-size: 12px;
+    height: 36px;
+    padding-left: 10px;
+  }
+  
+  .search-button {
+    height: 36px;
+    min-width: 36px;
+  }
+  
+  .clear-search-btn {
+    right: 40px;
+  }
+}
+
+/* Laptop-specific styles */
+@media (min-width: 992px) {
+  .search-container {
+    max-width: 450px;
+    width: 100%;
+  }
+}
+
+.search-container.mobile .search-input-group {
+  margin: 0;
+}
+
+.search-form {
+  width: 100%;
+}
+
+.search-suggestions::-webkit-scrollbar {
+  width: 6px;
+}
+
+.search-suggestions::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+.search-suggestions::-webkit-scrollbar-thumb {
+  background: #c1c1c1;
+  border-radius: 10px;
+}
+
+.search-input-group {
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.search-input-group input:focus {
+  box-shadow: none !important;
+  border-color: #37bac1 !important;
+}
+
+/* Mobile-specific styles for search suggestions */
+@media (max-width: 767.98px) {
+  .search-suggestions {
+    position: fixed !important;
+    top: 130px !important;
+    left: 15px !important;
+    right: 15px !important;
+    max-height: 60vh !important;
+    z-index: 800 !important;
+    border-radius: 15px !important;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15) !important;
+  }
+} 

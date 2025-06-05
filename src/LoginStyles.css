@@ -1,0 +1,1345 @@
+@import url('https://fonts.googleapis.com/css?family=Montserrat:400,500,600,700&display=swap');
+@import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css');
+
+/* Reset and base styles */
+* {
+	box-sizing: border-box;
+	font-family: 'Montserrat', sans-serif;
+	margin: 0;
+	padding: 0;
+}
+
+/* Main container with blue background */
+.login-blue-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #4169fa;
+    padding: 30px 20px;
+}
+
+/* Container for the login boxes */
+.login-boxes-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+}
+
+/* Individual login box */
+.login-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 380px;
+    padding: 30px;
+    position: relative;
+    margin: 0 10px;
+    display: none;
+}
+
+.login-box.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Login heading */
+.login-heading {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Field wrapper with icon */
+.login-field-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.field-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: #aaa;
+}
+
+/* Input fields */
+.login-field-wrapper input {
+    width: 100%;
+    padding: 12px 12px 12px 42px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    outline: none;
+}
+
+.login-field-wrapper input:focus {
+    border-color: #4169fa;
+    box-shadow: 0 0 0 2px rgba(65, 105, 250, 0.1);
+}
+
+/* Password toggle button */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+/* Remember me and forgot password row */
+.login-options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+.remember-me label {
+    color: #666;
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: #4169fa;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* Terms checkbox */
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #666;
+}
+
+.terms-checkbox input {
+    margin-right: 8px;
+}
+
+.terms-checkbox label {
+    cursor: pointer;
+}
+
+/* Error and success alerts */
+.login-error-alert {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.login-success-alert {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+/* Login button */
+.login-button {
+    background-color: #4169fa;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-bottom: 16px;
+}
+
+.login-button:hover {
+    background-color: #3a5fe0;
+    box-shadow: 0 4px 8px rgba(65, 105, 250, 0.2);
+}
+
+.login-button:disabled {
+    background-color: #a4b8fd;
+    cursor: not-allowed;
+}
+
+/* Switch form text */
+.switch-form-text {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.switch-form-text a {
+    color: #4169fa;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.switch-form-text a:hover {
+    text-decoration: underline;
+}
+
+/* Social login section */
+.social-login-options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+}
+
+/* Arrow animation for desktop view */
+.form-transition-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    color: white;
+    display: none;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+    .login-box {
+        margin: 0 40px;
+    }
+    
+    .form-transition-arrow {
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .login-boxes-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .login-box {
+        margin-bottom: 20px;
+    }
+}
+
+/* Google button */
+.google-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 240px;
+    height: 40px;
+    background-color: white;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    padding: 0 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.google-icon-wrapper {
+    margin-right: 10px;
+}
+
+.google-icon {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-text {
+    font-size: 14px;
+    color: #555;
+}
+
+
+/* Login container box - the main rectangular container */
+
+
+/* Main container with blue background */
+.login-blue-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background-color: #4169fa;
+    padding: 30px 20px;
+}
+
+/* Container for the login boxes */
+.login-boxes-container {
+    display: flex;
+    justify-content: center;
+    position: relative;
+    width: 100%;
+    max-width: 980px;
+}
+
+/* Individual login box */
+.login-box {
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    width: 100%;
+    max-width: 380px;
+    padding: 30px;
+    position: relative;
+    margin: 0 10px;
+    display: none;
+}
+
+.login-box.active {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
+/* Login heading */
+.login-heading {
+    font-size: 24px;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+/* Field wrapper with icon */
+.login-field-wrapper {
+    position: relative;
+    margin-bottom: 16px;
+}
+
+.field-icon {
+    position: absolute;
+    left: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    color: #aaa;
+}
+
+/* Input fields */
+.login-field-wrapper input {
+    width: 100%;
+    padding: 12px 12px 12px 42px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    font-size: 14px;
+    transition: border-color 0.3s;
+    outline: none;
+}
+
+.login-field-wrapper input:focus {
+    border-color: #4169fa;
+    box-shadow: 0 0 0 2px rgba(65, 105, 250, 0.1);
+}
+
+/* Password toggle button */
+.toggle-password {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: #aaa;
+    display: flex;
+    align-items: center;
+    padding: 0;
+}
+
+/* Remember me and forgot password row */
+.login-options-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 13px;
+}
+
+.remember-me {
+    display: flex;
+    align-items: center;
+}
+
+.remember-me input[type="checkbox"] {
+    margin-right: 6px;
+}
+
+.remember-me label {
+    color: #666;
+    cursor: pointer;
+}
+
+.forgot-link {
+    color: #4169fa;
+    text-decoration: none;
+}
+
+.forgot-link:hover {
+    text-decoration: underline;
+}
+
+/* Terms checkbox */
+.terms-checkbox {
+    display: flex;
+    align-items: center;
+    margin-bottom: 16px;
+    font-size: 13px;
+    color: #666;
+}
+
+.terms-checkbox input {
+    margin-right: 8px;
+}
+
+.terms-checkbox label {
+    cursor: pointer;
+}
+
+/* Error and success alerts */
+.login-error-alert {
+    background-color: rgba(231, 76, 60, 0.1);
+    color: #e74c3c;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.login-success-alert {
+    background-color: rgba(46, 204, 113, 0.1);
+    color: #2ecc71;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+/* Login button */
+.login-button {
+    background-color: #4169fa;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 12px;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    width: 100%;
+    transition: all 0.3s ease;
+    margin-bottom: 16px;
+}
+
+.login-button:hover {
+    background-color: #3a5fe0;
+    box-shadow: 0 4px 8px rgba(65, 105, 250, 0.2);
+}
+
+.login-button:disabled {
+    background-color: #a4b8fd;
+    cursor: not-allowed;
+}
+
+/* Switch form text */
+.switch-form-text {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.switch-form-text a {
+    color: #4169fa;
+    text-decoration: none;
+    font-weight: 500;
+}
+
+.switch-form-text a:hover {
+    text-decoration: underline;
+}
+
+/* Arrow animation for desktop view */
+.form-transition-arrow {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 10;
+    color: white;
+    display: none;
+}
+
+/* Responsive styles */
+@media (min-width: 768px) {
+    .login-box {
+        margin: 0 40px;
+    }
+    
+    .form-transition-arrow {
+        display: block;
+    }
+}
+
+@media (max-width: 767px) {
+    .login-boxes-container {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .login-box {
+        margin-bottom: 20px;
+    }
+}
+
+/* Social login */
+.social-login-options {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+	justify-content: center;
+	margin-bottom: 20px;
+}
+
+/* Terms checkbox */
+.terms-check {
+	margin-bottom: 20px;
+}
+
+.terms-check label {
+	display: flex;
+	align-items: center;
+	font-size: 13px;
+	color: #555;
+}
+
+.terms-check input {
+	margin-right: 8px;
+}
+
+/* Form switch option */
+.switch-form-option {
+	text-align: center;
+	font-size: 14px;
+	color: #666;
+	margin-top: 10px;
+}
+
+.switch-form-option button {
+	background: none;
+	border: none;
+	color: #6b47fe;
+	font-weight: 600;
+	cursor: pointer;
+	padding: 0 5px;
+}
+
+.switch-form-option button:hover {
+	text-decoration: underline;
+}
+
+/* Google sign-in button */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 44px;
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  padding: 0 20px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  width: 100%;
+  max-width: 240px;
+}
+
+.google-btn:hover {
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.12);
+}
+
+.google-icon-wrapper {
+  width: 20px;
+  height: 20px;
+  margin-right: 12px;
+}
+
+.google-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-text {
+  font-size: 14px;
+  color: #555;
+  font-weight: 500;
+}
+
+/* Divider */
+.login-divider {
+	position: relative;
+	text-align: center;
+	margin: 20px 0;
+}
+
+.login-divider::before,
+.login-divider::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	width: 45%;
+	height: 1px;
+	background-color: #e1e1e1;
+}
+
+.login-divider::before {
+	left: 0;
+}
+
+.login-divider::after {
+	right: 0;
+}
+
+
+
+/* Social login */
+.login-social {
+	display: flex;
+	justify-content: center;
+}
+
+/* Terms checkbox */
+.login-terms {
+	margin: 15px 0;
+}
+
+.checkbox-container {
+	display: flex;
+	align-items: center;
+	font-size: 13px;
+	color: #666;
+	cursor: pointer;
+}
+
+.checkbox-container input {
+	margin-right: 8px;
+}
+
+.checkmark {
+	margin-right: 8px;
+}
+
+/* Responsive styles */
+@media (max-width: 480px) {
+  .login-container-box {
+    max-width: 100%;
+    margin: 0 15px;
+    box-shadow: none;
+  }
+  
+  .login-box-content {
+    padding: 0 20px 30px;
+  }
+  
+  .login-logo {
+    max-width: 100px;
+  }
+  
+  .login-title {
+    font-size: 22px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1200px) {
+  .login-page-wrapper {
+    background-color: #f9f9f9;
+  }
+  
+  .login-container-box {
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+  }
+}
+
+/* Google sign-in button styles */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 220px;
+  height: 42px;
+  background-color: white;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+  cursor: pointer;
+  padding: 0 10px;
+  transition: all 0.3s ease;
+}
+
+.google-btn:hover {
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transform: translateY(-2px);
+}
+
+.google-icon-wrapper {
+  width: 24px;
+  height: 24px;
+  margin-right: 12px;
+}
+
+.google-icon {
+  width: 100%;
+  height: 100%;
+}
+
+.btn-text {
+  font-size: 14px;
+  color: #757575;
+  font-weight: 500;
+}
+
+
+
+#login-container h1 {
+	font-weight: bold;
+	margin: 0;
+}
+
+#login-container p {
+	font-size: 14px;
+	font-weight: 100;
+	line-height: 20px;
+	letter-spacing: 0.5px;
+	margin: 20px 0 30px;
+}
+
+#login-container span {
+	font-size: 12px;
+}
+
+#login-container a {
+	color: #333;
+	font-size: 14px;
+	text-decoration: none;
+	margin: 15px 0;
+	cursor: pointer !important;
+	pointer-events: auto !important;
+	z-index: 10005;
+	position: relative;
+}
+
+#login-container button {
+	border-radius: 8px;
+	border: 1px solid #C5BAFF;
+	background-color: #C5BAFF;
+	color: #FFFFFF;
+	font-size: 14px;
+	font-weight: bold;
+	padding: 12px 45px;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	transition: all 0.3s ease;
+	cursor: pointer !important;
+	margin: 15px 0;
+	position: relative;
+	z-index: 1053;
+	pointer-events: auto !important;
+}
+
+#login-container button:hover {
+	background-color: #b3a3ff;
+	transform: translateY(-2px);
+	box-shadow: 0 5px 15px rgba(197, 186, 255, 0.3);
+}
+
+#login-container button:active {
+	transform: scale(0.95);
+}
+
+#login-container button:focus {
+	outline: none;
+}
+
+#login-container button.ghost {
+	background-color: transparent;
+	border-color: #FFFFFF;
+}
+
+#login-container form {
+	background-color: #FFFFFF;
+	display: flex;
+	align-items: center;
+	justify-content: space-around;
+	flex-direction: column;
+	padding: 40px 50px;
+	height: 100%;
+	text-align: center;
+	z-index: 1053;
+	position: relative;
+}
+
+#login-container input {
+	background-color: #eee;
+	border: none;
+	padding: 12px 15px;
+	margin: 8px 0;
+	width: 100%;
+	font-size: 16px;
+	border-radius: 8px;
+	z-index: 1053;
+	position: relative;
+	cursor: text !important;
+	pointer-events: auto !important;
+	transition: all 0.3s ease;
+}
+
+#login-container input:focus {
+	outline: none;
+	box-shadow: 0 0 0 2px rgba(197, 186, 255, 0.3);
+	background-color: #f5f5f5;
+}
+
+/* Password field container and toggle eye */
+.password-field-container {
+  position: relative;
+  width: 100%;
+  margin: 8px 0;
+  z-index: 10005;
+}
+
+.password-toggle-eye {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer !important;
+  z-index: 1055;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: auto !important;
+}
+
+.password-toggle-eye svg {
+  opacity: 0.7;
+  transition: opacity 0.2s ease;
+  pointer-events: none;
+}
+
+.password-toggle-eye:hover svg {
+  opacity: 1;
+}
+
+/* Left panel - colored background with welcome message */
+.login-container .left-panel {
+  background: linear-gradient(135deg, #37bac1, #2a8f95);
+  color: white;
+  padding: 40px 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 40%;
+}
+
+.login-container .left-panel h1 {
+  font-size: 28px;
+  margin-bottom: 20px;
+  font-weight: bold;
+}
+
+.login-container .left-panel p {
+  font-size: 14px;
+  margin-bottom: 30px;
+  line-height: 1.6;
+}
+
+.login-container .social-container {
+  margin: 20px 0;
+}
+
+.login-container .or-divider {
+  position: relative;
+  margin: 20px 0;
+  width: 80%;
+  text-align: center;
+}
+
+.login-container .or-divider:before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.login-container .or-divider span {
+  position: relative;
+  background: linear-gradient(135deg, #37bac1, #2a8f95);
+  padding: 0 10px;
+  font-size: 12px;
+}
+
+/* Right panel - form area */
+.login-container .right-panel {
+  padding: 40px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* Google Sign-in Button Styles */
+.google-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 280px;
+  height: 42px;
+  background-color: white;
+  border-radius: 2px;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.25);
+  cursor: pointer !important;
+  border: 1px solid #dddddd;
+  padding: 0;
+  color: #444;
+  font-family: 'Roboto', sans-serif;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.2px;
+  z-index: 10005;
+  position: relative;
+  pointer-events: auto !important;
+}
+
+.google-btn:hover {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+  background-color: #f8f8f8;
+}
+
+.google-btn:active {
+  background: #eaeaea;
+}
+
+.google-btn-content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+  pointer-events: auto !important;
+  z-index: 10005;
+}
+
+.google-icon {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  background-color: transparent;
+  padding: 0;
+}
+
+.spinner {
+  display: inline-block;
+  width: 18px;
+  height: 18px;
+  border: 2px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 1s ease-in-out infinite;
+  margin-right: 10px;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.login-container .form-group {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+.login-container input {
+  background-color: #f7f7f7;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 15px;
+  width: 100%;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  z-index: 10005;
+  position: relative;
+  pointer-events: auto !important;
+}
+
+.login-container input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(55, 186, 193, 0.3);
+}
+
+.login-container .password-field-container {
+  position: relative;
+  width: 100%;
+  z-index: 10005;
+}
+
+.login-container .password-toggle-btn {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  color: #777;
+  cursor: pointer !important;
+  padding: 0;
+  margin: 0;
+  z-index: 1055;
+  pointer-events: auto !important;
+}
+
+.login-container .password-toggle-btn:hover {
+  color: #37bac1;
+}
+
+.login-container .forgot-password {
+  text-align: right;
+  margin: 10px 0 20px;
+}
+
+.login-container .forgot-password a {
+  color: #777;
+  font-size: 12px;
+  text-decoration: none;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+.login-container .forgot-password a:hover {
+  color: #37bac1;
+  text-decoration: underline;
+}
+
+.login-container .terms-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 15px 0;
+  z-index: 10005;
+  position: relative;
+}
+
+.login-container .terms-checkbox input {
+  width: auto;
+  margin-right: 10px;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+.login-container .terms-checkbox label {
+  font-size: 12px;
+  color: #777;
+  cursor: pointer !important;
+  pointer-events: auto !important;
+}
+
+.login-container .error-message {
+  color: #e74c3c;
+  font-size: 12px;
+  margin: 5px 0 15px;
+}
+
+.login-container .submit-btn {
+  background-color: #37bac1;
+  border: none;
+  border-radius: 5px;
+  color: white;
+  padding: 12px 45px;
+  letter-spacing: 1px;
+  font-weight: bold;
+  cursor: pointer !important;
+  transition: all 0.3s ease;
+  margin-top: 10px;
+  width: 100%;
+  z-index: 10005;
+  position: relative;
+  pointer-events: auto !important;
+}
+
+.login-container .submit-btn:hover {
+  background-color: #2a8f95;
+}
+
+.login-container .submit-btn:disabled {
+  background-color: #cccccc;
+  cursor: not-allowed !important;
+}
+
+.login-container .success-message {
+  position: absolute;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 1055;
+  width: 80%;
+}
+
+/* Mobile Responsive Styles */
+@media (max-width: 768px) {
+  #login-container {
+    height: 100%;
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: auto;
+    min-height: 100vh;
+  }
+
+  #login-container .form-container {
+    width: 100% !important;
+    position: absolute;
+    height: 100%;
+    padding: 20px;
+    transition: transform 0.6s ease-in-out;
+  }
+
+  #login-container .sign-in-container,
+  #login-container .sign-up-container {
+    left: 0;
+    width: 100%;
+    transform: translateX(0);
+  }
+  
+  /* Hide the sign-up container by default in mobile */
+  #login-container .sign-up-container {
+    transform: translateX(100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  /* Show sign-in container by default in mobile */
+  #login-container .sign-in-container {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  /* When right panel is active, hide sign-in and show sign-up */
+  #login-container.right-panel-active .sign-in-container {
+    transform: translateX(-100%);
+    opacity: 0;
+    visibility: hidden;
+  }
+  
+  #login-container.right-panel-active .sign-up-container {
+    transform: translateX(0);
+    opacity: 1;
+    visibility: visible;
+  }
+  
+  #login-container .overlay-container {
+    display: none;
+  }
+
+  #login-container form {
+    padding: 20px;
+  }
+
+  #login-container h1 {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  #login-container p {
+    font-size: 14px;
+    margin-bottom: 15px;
+  }
+
+  #login-container button {
+    padding: 10px 30px;
+    font-size: 12px;
+  }
+
+  /* Add mobile-only navigation */
+  .mobile-nav {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    position: fixed;
+    bottom: 20px;
+    left: 0;
+    z-index: 1060;
+  }
+
+  .mobile-nav-button {
+    background: #C5BAFF;
+    border: none;
+    color: white;
+    font-size: 14px;
+    padding: 10px 20px;
+    border-radius: 20px;
+    cursor: pointer;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+  }
+}
+
+/* Ensure all interactive elements are clickable */
+#login-container button,
+#login-container input,
+#login-container a,
+.password-toggle-eye,
+.terms-checkbox,
+.terms-checkbox input,
+.terms-checkbox label {
+  pointer-events: auto !important;
+  cursor: pointer !important;
+  z-index: 1053 !important;
+}
+
+/* Remove the form::after content as we have a dedicated mobile nav button */
+#login-container form::after {
+  content: '';
+  display: none;
+}
+
+#login-container input[type="text"],
+#login-container input[type="email"],
+#login-container input[type="password"] {
+  cursor: text !important;
+}
+
+#login-container .overlay-panel button {
+  z-index: 10005 !important;
+  position: relative !important;
+}
+
+/* Fix z-index for the overlay container */
+#login-container .overlay-container {
+  z-index: 10003 !important;
+  pointer-events: auto !important;
+}
+
+/* Make sure the form containers are clickable */
+#login-container .form-container {
+  pointer-events: auto !important;
+  z-index: 10005 !important;
+}
+
+/* Ensure the social login buttons work */
+#login-container .social-container {
+  pointer-events: auto !important;
+  z-index: 10005 !important;
+}
+
+/* Fix any potential pointer-events issues with parent elements */
+#login-container,
+.login-container,
+.modal-body,
+.modal-content,
+.modal-dialog {
+  pointer-events: auto !important;
+}
+
+/* Additional fixes for the login form */
+#login-container form * {
+  pointer-events: auto !important;
+}
+
+/* Improve visibility of buttons */
+#login-container button:hover {
+  opacity: 0.9;
+}
+
+/* Fix for the Google sign-in button */
+.google-btn * {
+  pointer-events: auto !important;
+}
+
+/* Add styles for the terms checkbox to make it more visible */
+.terms-checkbox {
+  display: flex;
+  align-items: center;
+  margin: 10px 0;
+  width: 100%;
+}
+
+.terms-checkbox input {
+  margin-right: 10px;
+  width: auto !important;
+}
+
+.terms-checkbox label {
+  font-size: 12px;
+  text-align: left;
+}
+
+/* Make error messages more visible */
+.error-message {
+  color: #ff3860;
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/* Fix for password toggle eye position */
+.password-field-container {
+  position: relative;
+  width: 100%;
+}
+
+.password-toggle-eye {
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  z-index: 1054;
+}

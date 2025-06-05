@@ -1,0 +1,365 @@
+/* NavbarStyles.css */
+
+/* Ensure equal spacing between navbar elements */
+.navbar-right-elements {
+  display: flex;
+  align-items: center;
+  gap: 15px !important; /* Reduced from 20px for tighter spacing */
+  margin-right: 20px; /* Reduced from 40px to move elements closer to search bar */
+  transform: translateX(0); /* Removed the left shift to align better with search bar */
+}
+
+/* Move search container to be more centered on the right side in laptop view */
+.search-container-wrapper {
+  position: relative;
+  margin-left: auto; 
+  margin-right: 20px; /* Reduced from 50px to position closer to action buttons */
+  width: 450px; /* Set a fixed width for better control */
+}
+
+/* Position the location button container to the right in laptop view */
+@media (min-width: 992px) {
+  .location-button-container {
+    margin-left: 40px !important;
+    margin-right: 30px !important;
+  }
+}
+
+/* Add specific styling to move wishlist button closer to chat button */
+.d-none.d-lg-flex.align-items-center.navbar-action-button + .d-none.d-lg-flex.align-items-center.navbar-action-button {
+  margin-left: -10px;
+}
+
+/* Adjust icon buttons to have consistent sizing */
+.navbar-action-button button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px !important;
+}
+
+/* Ensure the sell button maintains its size */
+.sell-button {
+  min-width: 80px !important;
+  height: 40px !important;
+}
+
+/* Make sure notification badges are consistently positioned */
+.wishlist-notification-badge,
+.chat-notification-dot {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  border-radius: 50%;
+}
+
+/* Create a higher stacking context for the entire navbar */
+.mdb-navbar {
+  position: relative;
+  z-index: 500; /* Reduced from 1000 to be below sidebar but above other elements */
+}
+
+/* Force the profile dropdown to appear above everything */
+.chakra-menu__menu-list {
+  z-index: 1000 !important; /* Reduced from 10000 to be below sidebar but above other elements */
+  position: relative !important;
+}
+
+/* Ensure the dropdown container is above other elements */
+.chakra-portal {
+  z-index: 1000 !important; /* Reduced from 10000 to be below sidebar but above other elements */
+  position: fixed !important;
+}
+
+/* Fix the category navbar z-index */
+.cat-navbar {
+  position: relative;
+  z-index: 400 !important; /* Reduced from 900 to be below sidebar but above other elements */
+}
+
+/* Tooltip styles for wishlist and chat buttons */
+.tooltip {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 5px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  white-space: nowrap;
+  z-index: 1000;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s ease;
+  bottom: -25px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.navbar-action-button:hover .tooltip {
+  opacity: 1;
+  visibility: visible;
+}
+
+/* Add a small arrow to the tooltip */
+.tooltip::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 0 4px 4px 4px;
+  border-style: solid;
+  border-color: transparent transparent rgba(0, 0, 0, 0.8) transparent;
+}
+
+/* Location button in mobile view */
+.location-button-mobile {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  color: #4a5568;
+  width: 90%;
+  max-width: 300px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+  position: relative;
+  z-index: 300; /* Reduced from 1000 to be below sidebar but above other elements */
+  margin: 0 auto;
+}
+
+/* Location dropdown overlay for mobile */
+.location-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+  z-index: 90; /* Reduced from 990 to be below sidebar but above other elements */
+  animation: fadeIn 0.2s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+/* Mobile location dropdown container */
+.location-dropdown-container {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 20px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+  max-height: 70vh;
+  overflow-y: auto;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  z-index: 200; /* Reduced from 1001 to be below sidebar but above other elements */
+  padding: 15px;
+  margin: 0 15px;
+  display: block;
+}
+
+.location-dropdown-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 15px;
+}
+
+.location-dropdown-title {
+  font-weight: bold;
+  font-size: 16px;
+  margin: 0;
+}
+
+.location-dropdown-close {
+  background: none;
+  border: none;
+  font-size: 24px;
+  color: #333;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  cursor: pointer;
+  padding: 0;
+}
+
+.location-dropdown-close:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.location-search-input {
+  width: 100%;
+  padding: 10px 15px;
+  border-radius: 10px;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  margin-bottom: 15px;
+  font-size: 14px;
+}
+
+.location-search-input:focus {
+  outline: none;
+  border-color: #37bac1;
+}
+
+.location-item-container {
+  margin-top: 10px;
+}
+
+.location-category-title {
+  font-size: 12px;
+  font-weight: bold;
+  color: #666;
+  margin: 10px 0;
+  padding: 5px;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.location-item {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  cursor: pointer;
+}
+
+.location-item:last-child {
+  border-bottom: none;
+}
+
+.location-item:active {
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+.location-item-icon {
+  margin-right: 10px;
+  color: #37bac1;
+}
+
+.location-item-content {
+  flex: 1;
+}
+
+.location-item-name {
+  font-weight: 500;
+  margin: 0;
+}
+
+.location-item-details {
+  font-size: 12px;
+  color: #666;
+  margin: 2px 0 0 0;
+}
+
+/* Mobile location dropdown styles - old fullscreen version */
+.mobile-location-dropdown {
+  display: none !important;
+}
+
+/* Mobile responsiveness for navbar */
+@media (max-width: 767.98px) {
+  .navbar-right-elements {
+    margin-right: 0;
+    transform: none;
+    justify-content: center;
+    gap: 15px !important;
+  }
+  
+  .search-container-wrapper {
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    max-width: 100%;
+  }
+  
+  /* Location button container */
+  .d-lg-none.d-block.w-100.mb-3 > div {
+    position: relative;
+    width: 100%;
+    z-index: 1000;
+  }
+  
+  .mobile-location-dropdown {
+    padding-top: env(safe-area-inset-top, 15px) !important; /* Support for notched phones */
+  }
+}
+
+/* Small mobile devices */
+@media (max-width: 575.98px) {
+  .navbar-right-elements {
+    gap: 10px !important;
+  }
+  
+  .navbar-action-button button {
+    width: 36px;
+    height: 36px;
+  }
+  
+  .mdb-navbar {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+}
+
+/* Mobile location button styling - direct fix */
+.mobile-location-button {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  background: white !important;
+  border: 1px solid #e2e8f0 !important;
+  border-radius: 20px !important;
+  padding: 8px 16px !important;
+  font-size: 14px !important;
+  color: #4a5568 !important;
+  width: 100% !important;
+  max-width: 280px !important;
+  margin: 0 auto !important;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1) !important;
+  position: relative !important;
+  z-index: 1000 !important;
+}
+
+/* Ensure the mobile location dropdown container appears properly */
+.mobile-search-header {
+  position: relative !important;
+  z-index: 1000 !important;
+  width: 100% !important;
+}
+
+/* Override any existing styles for the dropdown container */
+.location-dropdown-container {
+  position: absolute !important;
+  top: calc(100% + 10px) !important;
+  left: 15px !important;
+  right: 15px !important;
+  background: white !important;
+  border-radius: 20px !important;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1) !important;
+  max-height: 70vh !important;
+  overflow-y: auto !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  z-index: 1001 !important;
+  padding: 15px !important;
+  margin: 0 15px !important;
+  display: block !important;
+}

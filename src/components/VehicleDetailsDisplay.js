@@ -19,6 +19,20 @@ const VehicleDetailsDisplay = ({ vehicleData }) => {
   // If empty object, return null
   if (Object.keys(vehicleData).length === 0) return null;
 
+  // Determine if the vehicle is a bike
+  const isBike = vehicleData.vehicleType === 'bike';
+
+  // List of car-specific features that should not be shown for bikes
+  const carSpecificFeatures = [
+    'airbags',
+    'airConditioning',
+    'powerWindows',
+    'powerSteering',
+    'cruiseControl',
+    'parkingSensors',
+    'rearCamera'
+  ];
+
   // Vehicle fields to display with their icons
   const vehicleFields = [
     { key: 'vehicleType', label: 'Type', icon: <DirectionsCarIcon /> },
@@ -38,24 +52,27 @@ const VehicleDetailsDisplay = ({ vehicleData }) => {
   // Format features
   const formatFeatures = (features) => {
     if (!features) return [];
-    return Object.entries(features).map(([key, value]) => {
-      let label = key.replace(/([A-Z])/g, ' $1').trim(); // Convert camelCase to Title Case
-      label = label.charAt(0).toUpperCase() + label.slice(1); // Capitalize first letter
-      
-      if (key === 'airbags') {
+    return Object.entries(features)
+      // Filter out car-specific features for bikes
+      .filter(([key, _]) => !isBike || !carSpecificFeatures.includes(key))
+      .map(([key, value]) => {
+        let label = key.replace(/([A-Z])/g, ' $1').trim(); // Convert camelCase to Title Case
+        label = label.charAt(0).toUpperCase() + label.slice(1); // Capitalize first letter
+        
+        if (key === 'airbags') {
+          return { 
+            label, 
+            value: `${value} airbags`,
+            icon: <CheckCircleIcon color="green" />
+          };
+        }
+        
         return { 
           label, 
-          value: `${value} airbags`,
-          icon: <CheckCircleIcon color="green" />
+          value: value ? 'Yes' : 'No',
+          icon: value ? <CheckCircleIcon color="green" /> : <CancelIcon color="red" />
         };
-      }
-      
-      return { 
-        label, 
-        value: value ? 'Yes' : 'No',
-        icon: value ? <CheckCircleIcon color="green" /> : <CancelIcon color="red" />
-      };
-    });
+      });
   };
 
   const features = vehicleData.features ? formatFeatures(vehicleData.features) : [];

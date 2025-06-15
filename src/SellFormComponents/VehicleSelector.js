@@ -139,20 +139,21 @@ export default function VehicleSelector({ onVehicleSelect }) {
         year
       });
     } else {
-      onVehicleSelect({
-        vehicleType,
-        brand,
-        model,
-        fuelType,
-        transmission,
-        year,
-        month,
-        ownership,
-        kmDriven,
-        color,
-        registrationPlace,
-        insurance,
-        features: {
+      // Create features object based on vehicle type
+      let features = {};
+      
+      if (vehicleType === 'bike') {
+        // Only include bike-relevant features
+        features = {
+          abs,
+          accidental,
+          adjustableMirror,
+          alloyWheels,
+          bluetooth
+        };
+      } else {
+        // Include all features for cars
+        features = {
           abs,
           accidental,
           adjustableMirror,
@@ -166,7 +167,23 @@ export default function VehicleSelector({ onVehicleSelect }) {
           powerSteering,
           powerWindows,
           rearCamera
-        }
+        };
+      }
+      
+      onVehicleSelect({
+        vehicleType,
+        brand,
+        model,
+        fuelType,
+        transmission,
+        year,
+        month,
+        ownership,
+        kmDriven,
+        color,
+        registrationPlace,
+        insurance,
+        features
       });
     }
   }, [
@@ -405,6 +422,10 @@ export default function VehicleSelector({ onVehicleSelect }) {
             
             <Checkbox isChecked={accidental} onChange={(e) => setAccidental(e.target.checked)}>
               Accidental
+            </Checkbox>
+
+            <Checkbox isChecked={adjustableMirror} onChange={(e) => setAdjustableMirror(e.target.checked)}>
+              Adjustable Mirrors
             </Checkbox>
           </SimpleGrid>
         </>

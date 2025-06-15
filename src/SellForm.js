@@ -45,12 +45,14 @@ export default function SellForm() {
 
   const handleAddForm = () => {
     if (formInputs.length < 12) {
-      // check if the length of formInputs is less than 12
+      // Generate a unique ID for this component
+      const componentId = Date.now().toString();
       setFormInputs((prevFormInputs) => [
         ...prevFormInputs,
         <MultipleImageUploadComponent
-          key={prevFormInputs.length}
-          onFileSelect={(file) => handleFileChange(file)}
+          key={componentId}
+          id={componentId}
+          onFileSelect={(file) => handleFileChange(file, componentId)}
         />,
       ]);
     }
@@ -73,10 +75,34 @@ export default function SellForm() {
   const [jobData, setJobData] = useState({});
   const toast = useToast();
 
+  // Ensure there's always at least one image upload component
+  useEffect(() => {
+    if (formInputs.length === 0) {
+      // Generate a unique ID for this component
+      const componentId = Date.now().toString();
+      setFormInputs([
+        <MultipleImageUploadComponent
+          key={componentId}
+          id={componentId}
+          onFileSelect={(file) => handleFileChange(file, componentId)}
+        />
+      ]);
+    }
+  }, [formInputs.length]);
 
-  const handleFileChange = (file) => {
+  const handleFileChange = (file, componentId) => {
     // Handle the uploaded file here
-    setUploadedFiles((prevUploadedFiles) => [...prevUploadedFiles, file]);
+    if (file === null) {
+      // If file is null, it means the image was removed
+      // Remove the file from uploadedFiles
+      setUploadedFiles((prevUploadedFiles) => prevUploadedFiles.filter(Boolean));
+      
+      // Remove the component when image is removed
+      setFormInputs((prevInputs) => prevInputs.filter(input => input.props.id !== componentId));
+    } else {
+      // Add the new file to the uploadedFiles array
+      setUploadedFiles((prevUploadedFiles) => [...prevUploadedFiles, file]);
+    }
   };
   const handlePriceChange = (price) => {
     // Handle the uploaded Price here
